@@ -17,50 +17,13 @@
 <?php wp_body(); ?>
 
 <div class="wrapper">
-    <?php /*
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <nav class="second-menu">
-                        <?php wp_nav_menu(array(
-                            'theme_location' => 'second-menu',
-                            'container' => false,
-                            'menu_class' => 'menu-container',
-                            'menu_id' => '',
-                            'fallback_cb' => 'wp_page_menu',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                            'depth' => 2
-                        )); ?>
-                    </nav>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    Some info here
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    Some info here
-                </div>
-            </div>
-        </div>
-    </div>
-    */ ?>
-
     <header class="page-header">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                     <?php get_default_logo_link(); ?>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <?php get_search_form(); ?>
-                </div>
-            </div>
-        </div>
-    </header>
-
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
     <?php if (has_nav_menu('main-nav')) { ?>
         <nav class="nav js-menu">
             <button type="button" tabindex="0" class="menu-item-close menu-close js-menu-close"></button>
@@ -75,6 +38,32 @@
             )); ?>
         </nav>
     <?php } ?>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center">
+                    <?php if (has_social()) { ?>
+    <ul class="social">
+        <?php foreach (get_social() as $name => $social) { ?>
+            <li class="social-item">
+                <a href="<?php echo esc_attr(esc_url($social['url'])); ?>" class="social-link social-<?php echo esc_attr($name); ?>" target="_blank">
+                    <?php if (!empty($social['icon-html'])) {
+                        echo strip_tags($social['icon-html'], '<i>');
+                    } else { ?>
+                        <i class="<?php echo esc_attr($social['icon']); ?>" aria-hidden="true"
+                           aria-label="<?php echo esc_attr($social['text']); ?>"></i>
+                    <?php } ?>
+                </a>
+            </li>
+        <?php } ?>
+    </ul>
+<?php } ?>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                    <button type="button" class="button-small button-inverse call-back">Бесплатная консультация</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div class="container js-container">
 

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-Theme Name: brainworks-v4.8.4
+Theme Name: Oplata Academy
 Theme URI:
 Text Domain: brainworks
 Author: Brain Works
@@ -61,6 +61,7 @@ Tags: one-column, two-columns, full-width-template, e-commerce
 @import "blocks/menu-mobile";
 @import "blocks/sidebar";
 @import "blocks/footer";
+@import "blocks/hero";
 
 ::selection {
     background-color: $selectionBgColor;

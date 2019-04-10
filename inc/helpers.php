@@ -391,7 +391,7 @@ if (!function_exists('get_default_logo_link')) {
 
         } else {
 
-            $file = get_template_directory_uri() . '/assets/img/logo.png';
+            $file = get_template_directory_uri() . '/assets/img/logo.svg';
 
             $img = sprintf('<img class="logo-img" src="%s" alt="%s">', esc_url($file), get_bloginfo('name'));
 

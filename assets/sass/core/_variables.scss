@@ -3,13 +3,13 @@ $image-url-path: "assets/img/" !default;
 $font-url-path: "assets/fonts/" !default;
 
 $borderRadius: 0px;
-$shadow: 0 0 10px rgba(#000, .2);
+$shadow: 0px 2px 15px rgba(233, 174, 48, 0.7);
 
 // BRAND
-$themeColorOne: #2c3e50; // header, menu, footer, title,
-$themeColorTwo: #e74c3c; // menu active item, button, footer link hover, woo
-$themeColorThree: #3498db; // preHeader bg, wooOnSale
-$themeColorFour: #2980b9; //menu hover item, table border, preHeader font
+$themeColorOne: #232323; // header, menu, footer, title,
+$themeColorTwo: #E9AE30; // menu active item, button, footer link hover, woo
+$themeColorThree: #e5e5e5; // preHeader bg, wooOnSale
+$themeColorFour: #E9AE30; //menu hover item, table border, preHeader font
 
 // SELECTION
 $selectionBgColor: $themeColorTwo;
@@ -59,8 +59,8 @@ $menuContainerMobilePaddingTop: 30%;
 // MENU END
 
 // FOOTER
-$footerBgColor: $themeColorOne;
-$footerFontColor: #fff;
+$footerBgColor: $themeColorThree;
+$footerFontColor: #000;
 $footerLinkColorActive: darken($footerFontColor, 5%);
 
 // WRAPPER
