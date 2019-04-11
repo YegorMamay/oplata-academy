@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
+    <meta property="og:image" content="https://oplata-academy.pro/wp-content/uploads/oplata-academy-cover.jpg">
+    <meta property="og:image:secure_url" content="https://oplata-academy.pro/wp-content/uploads/oplata-academy-cover.jpg">
+    <meta property="og:description" content="Научись создавать товарный бизнес и зарабатывать от 5000$">
+    
     <link rel="shortcut icon" href="<?php echo esc_url(get_template_directory_uri() . '/assets/img/favicon.ico'); ?>"
           type="image/x-icon">
     <link rel="icon" href="<?php echo esc_url(get_template_directory_uri() . '/assets/img/favicon.ico'); ?>"
