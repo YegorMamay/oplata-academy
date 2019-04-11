@@ -1,13 +1,30 @@
-.pre-header {
-    padding: 5px 0;
-    background-color: $preHeaderBgColor;
-    color: $preHeaderColor;
-}
-
 .page-header {
     padding: 10px 0;
     background-color: $headerBgColor;
     color: $headerFontColor;
+    
+    .social, .call-back {
+        margin-top: 5px;
+    }
+    
+    .fab {
+        color: white;
+        border: 1px solid white;
+        padding-top: 7px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .call-back {
+        float: right;
+    }
+
+    @media screen and (max-width: 480px) {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+    }
 }
 
 .logo {

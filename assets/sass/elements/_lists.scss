@@ -2,3 +2,21 @@ ul,
 ol {
     padding-left: 20px;
 }
+
+.social-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    li {
+        display: inline-block;
+        list-style: none;
+        margin-right: 10px;
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}

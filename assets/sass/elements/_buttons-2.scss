@@ -7,11 +7,13 @@
     font-family: $fontFamilyTwo;
     height: auto;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px;
     border: 1px solid $buttonOutlinedFirstColor;
     background-color: transparent;
-    box-shadow: none;
+    box-shadow: $shadow;
     line-height: 1 !important;
+    text-transform: uppercase;
+    font-weight: bolder;
 
     color: $buttonOutlinedFirstColor;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -32,11 +34,11 @@
 
     &.button-inverse {
         background: $buttonOutlinedFirstColor;
-        color: $buttonOutlinedSecondColor;
+        color: #000;
 
         &:hover,
         &:active {
-            color: $buttonOutlinedFirstColor;
+            color: #000;
             background: transparent;
         }
     }
@@ -79,117 +81,19 @@ button.button,
 a.button {
     @include button-style;
     padding: 16px 60px;
-    font-size: 20px;
 }
 
 .button-medium {
     @include button-style;
     padding: 14px 25px;
-    font-size: 16px;
 }
 
 .button-small {
     @include button-style;
     padding: 10px 15px;
-    font-size: 14px;
 }
 
 [type="submit"] {
     @include button-style;
     padding: 5px 10px;
-}
-
-@media #{$mobile} {
-    .button-large,
-    button.button,
-    a.button {
-        padding: 11px 45px;
-        font-size: 12px;
-    }
-
-    .button-medium {
-        padding: 9px 22px;
-        font-size: 10px;
-    }
-
-    .button-small {
-        padding: 6px 12px;
-        font-size: 8px;
-    }
-}
-
-@media #{$tablet} {
-    .button-large,
-    button.button,
-    a.button {
-        padding: 12px 50px;
-        font-size: 13px;
-    }
-
-    .button-medium {
-        padding: 10px 25px;
-        font-size: 11px;
-    }
-
-    .button-small {
-        padding: 7px 14px;
-        font-size: 9px;
-    }
-}
-
-@media #{$laptop} {
-    .button-large,
-    button.button,
-    a.button {
-        padding: 13px 55px;
-        font-size: 14px;
-    }
-
-    .button-medium {
-        padding: 11px 28px;
-        font-size: 12px;
-    }
-
-    .button-small {
-        padding: 8px 16px;
-        font-size: 10px;
-    }
-}
-
-@media #{$desktop} {
-    .button-large,
-    button.button,
-    a.button {
-        padding: 14px 60px;
-        font-size: 16px;
-    }
-
-    .button-medium {
-        padding: 12px 32px;
-        font-size: 14px;
-    }
-
-    .button-small {
-        padding: 9px 18px;
-        font-size: 12px;
-    }
-}
-
-@media #{$screen} {
-    .button-large,
-    button.button,
-    a.button {
-        padding: 15px 65px;
-        font-size: 18px;
-    }
-
-    .button-medium {
-        padding: 13px 35px;
-        font-size: 15px;
-    }
-
-    .button-small {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
 }

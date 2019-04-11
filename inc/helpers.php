@@ -222,6 +222,12 @@ if (!function_exists('get_social')) {
     function get_social()
     {
         $_socials = [
+            'telegram' => [
+                'url' => get_theme_mod('bw_messenger_telegram'),
+                'text' => 'Telegram',
+                'icon' => 'fab fa-vk',
+                'icon-html' => '<img src="'.get_template_directory_uri().'/assets/img/svg-icons/telegram.svg" />',
+            ],
             'vk' => [
                 'url' => get_theme_mod('bw_social_vk'),
                 'text' => 'Vk',
@@ -239,6 +245,7 @@ if (!function_exists('get_social')) {
                 'text' => 'Facebook',
                 'icon' => 'fab fa-facebook-f',
                 'icon-html' => get_theme_mod('bw_social_facebook_icon'),
+                'icon-html' => '<img src="'.get_template_directory_uri().'/assets/img/svg-icons/facebook.svg" />',
             ],
             'linkedin' => [
                 'url' => get_theme_mod('bw_social_linkedin'),
@@ -250,7 +257,7 @@ if (!function_exists('get_social')) {
                 'url' => get_theme_mod('bw_social_instagram'),
                 'text' => 'Instagram',
                 'icon' => 'fab fa-instagram',
-                'icon-html' => get_theme_mod('bw_social_instagram_icon'),
+                'icon-html' => '<img src="'.get_template_directory_uri().'/assets/img/svg-icons/instagram.svg" />',
             ],
             'google-plus' => [
                 'url' => get_theme_mod('bw_social_google_plus'),
@@ -380,7 +387,7 @@ if (!function_exists('get_default_logo_link')) {
      *
      * @return void
      */
-    function get_default_logo_link()
+    function get_default_logo_link($file_name = "logo.svg")
     {
         $desc = sprintf('<span class="logo-desc screen-reader-text">%s</span>', get_bloginfo('description'));
 
@@ -391,7 +398,7 @@ if (!function_exists('get_default_logo_link')) {
 
         } else {
 
-            $file = get_template_directory_uri() . '/assets/img/logo.png';
+            $file = get_template_directory_uri() . '/assets/img/' . $file_name;
 
             $img = sprintf('<img class="logo-img" src="%s" alt="%s">', esc_url($file), get_bloginfo('name'));
 

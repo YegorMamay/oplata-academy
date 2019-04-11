@@ -1,22 +1,31 @@
 </div><!-- .page-wrapper end-->
 
 <footer class="footer js-footer">
-    <?php if (is_active_sidebar('footer-widget-area')) : ?>
-        <div class="pre-footer">
-            <div class="container">
-                <div class="row">
-                    <?php dynamic_sidebar('footer-widget-area'); ?>
-                </div>
+    <div class="container">
+        <div class="footer-container">
+            <div class="logo-container">
+                <?php echo get_default_logo_link('logo-colored.svg'); ?>
             </div>
-        </div><!-- .pre-footer end-->
-    <?php endif; ?>
-
-    <div class="copyright">
-        <p class="container">
-            <?php _e('Developed by', 'brainworks') ?>
-            <a href="https://brainworks.pro/" target="_blank">BRAIN WORKS</a>
-            &copy; <?php echo date('Y'); ?>
-        </p>
+            <div class="copyright-container">
+                <span>Сайт разработан <a href="https://brainworks.com.ua" target="_blank">“Brain Works”</a></span>
+            </div>
+            <div class="social-list-container">
+                <ul class="social-list">
+                    <?php foreach (get_social() as $social): ?>
+                    <li>
+                        <a href="<?php echo $social['url'] ?>" target="_blank">
+                            <?php echo $social['icon-html']; ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="callback-container">
+                <button class="button-medium button-inverse callback-footer">
+                    Бесплатная консультация
+                </button>
+            </div>
+        </div>
     </div>
 </footer>
 
