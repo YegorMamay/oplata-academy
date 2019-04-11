@@ -1,0 +1,44 @@
+#hero {
+    h3 {
+        line-height: 43px;
+    }
+}
+
+.hero-list {
+    li {
+        line-height: 33px;
+        
+        .fal {
+            background: $themeColorTwo;
+            border-radius: 25px;
+            padding: 3px 5px;
+            font-size: 15px;
+            margin-right: 15px;
+        }
+    }
+}
+
+.icon-block, .format-icon-block {
+    display: flex;
+    align-items: end;
+}
+
+.icon-block {
+    img {
+            margin-right: 30px;
+    }
+    
+    p.bold {
+        margin-bottom: 10px;
+    }
+}
+
+.format-icon-block {
+    img {
+            margin-right: 15px;
+    }
+}
+
+.fa-calendar {
+    color: $themeColorTwo;
+}

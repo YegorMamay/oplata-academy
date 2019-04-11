@@ -48,12 +48,19 @@
                     </ul>
                 </div>
                 <div class="page-header-callback-container">
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="button-medium button-inverse call-back">Бесплатная консультация</button>
-                    </div>
+                    <button type="button" class="button-medium button-inverse call-back">Бесплатная консультация</button>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="container js-container">
+
+        <div class="nav-mobile-header">
+            <button class="hamburger js-hamburger" type="button" tabindex="0">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+            </button>
+            <div class="logo"><?php get_default_logo_link(); ?></div>
+        </div>

@@ -54,6 +54,7 @@ Tags: one-column, two-columns, full-width-template, e-commerce
 @import "elements/dividers";
 @import "elements/icons";
 @import "elements/custom-scrollbar";
+@import "elements/elements";
 
 // BLOCKS
 @import "blocks/header";
@@ -61,6 +62,7 @@ Tags: one-column, two-columns, full-width-template, e-commerce
 @import "blocks/menu-mobile";
 @import "blocks/sidebar";
 @import "blocks/footer";
+@import "blocks/hero";
 
 ::selection {
     background-color: $selectionBgColor;

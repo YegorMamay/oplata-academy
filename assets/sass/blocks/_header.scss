@@ -1,5 +1,5 @@
 .page-header {
-    padding: 10px 0;
+    padding: 15px 0;
     background-color: $headerBgColor;
     color: $headerFontColor;
     
@@ -17,13 +17,46 @@
     
     .call-back {
         float: right;
-    }
+    } 
 
     @media screen and (max-width: 480px) {
         position: fixed;
         top: 0px;
         left: 0px;
         width: 100%;
+    }
+
+    .page-header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page-header-callback-container {
+            max-width: 280px;
+            flex: 1;
+            text-align: right;
+            button {
+                width: 100%;
+            }
+        }
+
+        .page-header-social-list-container {
+            max-width: 140px;
+            li {
+                a {
+                    img {
+                        z-index: 111;
+                        filter: invert(100%) sepia(0%) saturate(683%) hue-rotate(94deg) brightness(106%) contrast(102%);
+                    }
+                }
+            }
+        }
     }
 }
 

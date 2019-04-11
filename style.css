@@ -261,7 +261,7 @@ a img.aligncenter {
 
 .link {
   text-decoration: underline;
-  color: #E9AE30; }
+  color: #e5e5e5; }
 
 .bold {
   font-weight: 900; }
@@ -276,6 +276,9 @@ em {
 
 .text-muted {
   color: #aaa; }
+
+.text-light {
+  color: #fff; }
 
 .text-center {
   text-align: center; }
@@ -8037,8 +8040,95 @@ a:hover .fa {
   ::-webkit-scrollbar-corner {
     background: transparent; } }
 
+.price-card {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.06);
+  margin: 100px 3% 0px;
+  padding: 0 10px 20px 10px; }
+  .price-card .price-card-title {
+    position: absolute;
+    font-size: 26px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    -webkit-transform: translateY(-60%) translateX(-20px);
+    -ms-transform: translateY(-60%) translateX(-20px);
+    transform: translateY(-60%) translateX(-20px);
+    z-index: 100; }
+  .price-card .price-card-total {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 30px; }
+    .price-card .price-card-total > span {
+      display: inline-block; }
+    .price-card .price-card-total .old {
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: line-through; }
+    .price-card .price-card-total .new {
+      margin-top: 10px;
+      font-size: 22px;
+      font-weight: bolder;
+      color: #000; }
+  .price-card .price-card-button-container {
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center; }
+    .price-card .price-card-button-container > a {
+      display: inline-block;
+      width: 100%; }
+  .price-card .price-card-list {
+    padding-top: 40px;
+    min-height: 400px; }
+    .price-card .price-card-list li {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 15px;
+      font-size: 14px; }
+      .price-card .price-card-list li::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 0px;
+        width: 16px;
+        height: 16px;
+        background-image: url("assets/img/svg-icons/check-list.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
+  .price-card::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 160px;
+    background-color: #E9AE30;
+    z-index: -1; }
+
 .page-header {
-  padding: 10px 0;
+  padding: 15px 0;
   background-color: #232323;
   color: #fff; }
   .page-header .social, .page-header .call-back {
@@ -8057,6 +8147,42 @@ a:hover .fa {
       top: 0px;
       left: 0px;
       width: 100%; } }
+  .page-header .page-header-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    .page-header .page-header-container > div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+    .page-header .page-header-container .page-header-callback-container {
+      max-width: 280px;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-align: right; }
+      .page-header .page-header-container .page-header-callback-container button {
+        width: 100%; }
+    .page-header .page-header-container .page-header-social-list-container {
+      max-width: 140px; }
+      .page-header .page-header-container .page-header-social-list-container li a img {
+        z-index: 111;
+        -webkit-filter: invert(100%) sepia(0%) saturate(683%) hue-rotate(94deg) brightness(106%) contrast(102%);
+        filter: invert(100%) sepia(0%) saturate(683%) hue-rotate(94deg) brightness(106%) contrast(102%); }
 
 .logo, .logo-link, .logo-img {
   display: inline-block;
@@ -8111,16 +8237,19 @@ a:hover .fa {
 .nav {
   display: block;
   position: relative;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
   border-radius: 4px;
-  text-align: center; }
+  text-align: center;
+  max-width: 500px; }
   .nav .menu, .nav .menu-container {
     font-size: 0; }
   .nav .menu-item {
     display: inline-block;
     vertical-align: middle;
     padding: 5px; }
+    .nav .menu-item:first-child {
+      padding-left: 0px; }
+    .nav .menu-item:last-child {
+      padding-right: 0px; }
     .nav .menu-item .menu-item-has-children-arrow {
       display: none; }
     .nav .menu-item-close {
@@ -8532,18 +8661,50 @@ a:hover .fa {
 
 .pre-footer {
   padding: 20px 0;
-  background-color: #3d3d3d; }
+  background-color: white; }
 
 .copyright {
   padding: 14px 0;
-  background-color: #232323;
+  background-color: #e5e5e5;
   text-align: center;
-  color: #fff; }
+  color: #000; }
   .copyright a {
-    color: #fff;
+    color: #000;
     text-decoration: underline; }
     .copyright a:hover {
-      color: #f2f2f2; }
+      color: black; }
+
+#hero h3 {
+  line-height: 43px; }
+
+.hero-list li {
+  line-height: 33px; }
+  .hero-list li .fal {
+    background: #E9AE30;
+    border-radius: 25px;
+    padding: 3px 5px;
+    font-size: 15px;
+    margin-right: 15px; }
+
+.icon-block, .format-icon-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end; }
+
+.icon-block img {
+  margin-right: 30px; }
+
+.icon-block p.bold {
+  margin-bottom: 10px; }
+
+.format-icon-block img {
+  margin-right: 15px; }
+
+.fa-calendar {
+  color: #E9AE30; }
 
 ::selection {
   background-color: #E9AE30;
