@@ -4,16 +4,29 @@
     }
 }
 
+.fa-check, .fa-plus {
+    background: $themeColorTwo;
+    border-radius: 25px;
+    color: white;
+    padding: 3px 5px;
+}
+
 .hero-list {
+    padding-left: 30px;
+    
     li {
         line-height: 33px;
         
         .fal {
-            background: $themeColorTwo;
-            border-radius: 25px;
-            padding: 3px 5px;
-            font-size: 15px;
-            margin-right: 15px;
+            margin-right: 20px;
+        }
+    }
+    
+    @media #{$mobile} {
+        padding-left: 0;
+        
+        li .fal {
+            margin-right: 5px;
         }
     }
 }
@@ -26,6 +39,11 @@
 .icon-block {
     img {
             margin-right: 30px;
+        
+        @media #{$mobile} {
+            width: 50px;
+            margin-right: 15px;
+        }
     }
     
     p.bold {
@@ -44,6 +62,7 @@
 }
 
 .progr-item {
+    background: #fdfdfd;
     border: 1px solid #d8d8d8;
     width: 100%;
     max-width: 370px;
@@ -60,5 +79,11 @@
     &:hover {
         background: white;
         box-shadow: 0 0 20px #c5c5c5;
+    }
+}
+
+@media #{$mobile} {
+    .text-right p{
+        text-align: left;
     }
 }
