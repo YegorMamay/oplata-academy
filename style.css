@@ -8714,11 +8714,14 @@ a:hover .fa {
   padding: 30px 20px;
   height: auto;
   min-height: 400px;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
   transition: .2s; }
   .progr-item h4 {
     margin-bottom: 30px; }
   .progr-item:hover {
     background: white;
+    -webkit-box-shadow: 0 0 20px #c5c5c5;
     box-shadow: 0 0 20px #c5c5c5; }
 
 ::selection {
