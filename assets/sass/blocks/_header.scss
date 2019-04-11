@@ -2,6 +2,7 @@
     padding: 15px 0;
     background-color: $headerBgColor;
     color: $headerFontColor;
+    z-index: 10000;
     
     .social, .call-back {
         margin-top: 5px;

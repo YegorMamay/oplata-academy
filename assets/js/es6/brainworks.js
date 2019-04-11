@@ -37,6 +37,13 @@
                 removeAllStyles($('.js-menu'));
             }
         });
+
+        $('.price-card')
+            .each((i, el) => {
+                $(el)
+                    .parent()
+                    .addClass('price-card-wrapper');
+            });
     });
 
     /**

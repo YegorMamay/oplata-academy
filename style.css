@@ -8112,7 +8112,10 @@ a:hover .fa {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat; }
-  .price-card::before {
+
+.price-card-wrapper {
+  position: relative; }
+  .price-card-wrapper::before {
     content: "";
     position: absolute;
     display: block;
@@ -8121,12 +8124,13 @@ a:hover .fa {
     width: 100px;
     height: 160px;
     background-color: #E9AE30;
-    z-index: -1; }
+    z-index: 0; }
 
 .page-header {
   padding: 15px 0;
   background-color: #232323;
-  color: #fff; }
+  color: #fff;
+  z-index: 10000; }
   .page-header .social, .page-header .call-back {
     margin-top: 5px; }
   .page-header .fab {
@@ -8806,7 +8810,7 @@ body {
   min-height: 100%; }
   @media (max-width: 544px) {
     .wrapper {
-      padding-top: 80px; } }
+      padding-top: 175px; } }
 
 strong,
 b {

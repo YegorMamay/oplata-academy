@@ -76,6 +76,10 @@
         }
     }
 
+    
+}
+.price-card-wrapper {
+    position: relative;
     &::before {
         content: "";
         position: absolute;
@@ -85,6 +89,6 @@
         width: 100px;
         height: 160px;
         background-color: $themeColorTwo;
-        z-index: -1;
+        z-index: 0;
     }
 }

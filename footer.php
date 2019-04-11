@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div class="callback-container">
-                <button class="button-medium button-inverse callback-footer">
+                <button class="button-medium button-inverse call-back">
                     Бесплатная консультация
                 </button>
             </div>

@@ -29,10 +29,13 @@
                 removeAllStyles($(".js-menu"));
             }
         });
+        $(".price-card").each(function(i, el) {
+            $(el).parent().addClass("price-card-wrapper");
+        });
     });
     var stickFooter = function stickFooter(footer, container) {
         var el = $(footer);
-        var height = el.outerHeight() + "px";
+        var height = el.outerHeight() + 20 + "px";
         $(container).css("paddingBottom", height);
     };
     var reviews = function reviews(container) {
