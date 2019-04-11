@@ -44,6 +44,35 @@
             }
         }
     }
+
+    @media screen and (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            padding-bottom: 35px;
+            > div {
+                width: 100%;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .callback-container {
+                max-width: 100%;
+                text-align: center;
+                margin-left: 0px;
+                > button {
+                    max-width: 220px;
+                    margin: 0 auto;
+                }
+            }
+            .copyright-container {
+                text-align: center;
+                position: absolute;
+                bottom: 5px;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
 }
 
 .pre-footer {

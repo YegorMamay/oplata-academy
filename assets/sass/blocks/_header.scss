@@ -31,6 +31,14 @@
         flex-direction: row;
         justify-content: space-between;
 
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            text-align: center;
+            > div {
+                margin: 0px auto 10px;
+            }
+        }
+
         > div {
             display: flex;
             flex-direction: column;
@@ -43,6 +51,9 @@
             text-align: right;
             button {
                 width: 100%;
+                &:hover {
+                    color: #fff;
+                }
             }
         }
 
