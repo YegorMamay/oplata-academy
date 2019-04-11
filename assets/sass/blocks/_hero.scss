@@ -42,3 +42,23 @@
 .fa-calendar {
     color: $themeColorTwo;
 }
+
+.progr-item {
+    border: 1px solid #d8d8d8;
+    width: 100%;
+    max-width: 370px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    height: auto;
+    min-height: 400px;
+    @include smooth_animation;
+    
+    h4 {
+        margin-bottom: 30px;
+    }
+    
+    &:hover {
+        background: white;
+        box-shadow: 0 0 20px #c5c5c5;
+    }
+}

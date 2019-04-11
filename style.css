@@ -8706,6 +8706,21 @@ a:hover .fa {
 .fa-calendar {
   color: #E9AE30; }
 
+.progr-item {
+  border: 1px solid #d8d8d8;
+  width: 100%;
+  max-width: 370px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  height: auto;
+  min-height: 400px;
+  transition: .2s; }
+  .progr-item h4 {
+    margin-bottom: 30px; }
+  .progr-item:hover {
+    background: white;
+    box-shadow: 0 0 20px #c5c5c5; }
+
 ::selection {
   background-color: #E9AE30;
   color: #fff;
