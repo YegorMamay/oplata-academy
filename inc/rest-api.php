@@ -1,7 +1,6 @@
 <?php
     if (!function_exists("payment_gateway")) {
         function payment_gateway(WP_REST_Request $req) {
-            return ['type' => 'ERROR', 'message' => 'Referer isn\' correct'];
             if (!isset($_SERVER['HTTP_REFERER'])) {
                 return ['type' => 'ERROR', 'message' => 'Http referer is undefined!'];
             }
