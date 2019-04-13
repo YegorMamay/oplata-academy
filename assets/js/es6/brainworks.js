@@ -31,6 +31,7 @@
         buyOneClick('.one-click', '[data-field-id="field7"]', 'h1.page-name');
         // On Copy
         d.on('copy', addLink);
+        paymentTriggers('.payment-trigger');
 
         w.on('resize', () => {
             if (w.innerWidth >= 630) {
@@ -480,5 +481,102 @@
 
         });
     };
+
+    /**
+     * Redirect to the payment page
+     * @param {string} selector Triggers
+     * @returns {void}
+     */
+    const paymentTriggers = (selector) => {
+        const elements = $(selector);
+        const errorPopup = new CustomPopup('.error-popup');
+        elements.on('click', (e) => {
+            e.preventDefault();
+            const $el = $(e.target),
+                product = {
+                    name: $el.data('name'),
+                    price: $el.data('price')
+                },
+                url = new URL(`${location.origin}/wp-json/brainworks/payment`);
+            for (let key in product) {
+                url.searchParams.append(key, product[key]);
+            }   
+            fetch(url) 
+                .then(data => data.json())
+                .then(response => {
+                    if (response.type === 'SUCCESS') {
+                        location.href = response.message;
+                    } else {
+                        callErrorPopup(errorPopup, response.message);
+                    }
+                });
+        });
+    };
+
+    /**
+     * Call popup and display image
+     * @param {CustomPopup} popup Selector of popup to call
+     * @param {string} message Message to display
+     * @returns {void}
+     */
+    const callErrorPopup = (popup, message) => {
+        popup.updateMessageBox(message);
+        popup.toggle();
+    };
+
+    /**
+     * Popup class with public methods
+     */
+    class CustomPopup {
+        /**
+         * Initialize popup
+         * @param {string} popupSelector Selector of popup to control
+         */
+        constructor(popupSelector) {
+            this.root = document.querySelector(popupSelector);
+
+            if (this.root) {
+                const triggers = this.root.querySelectorAll('.popup-trigger');
+                if (!triggers.length) {
+                    return false;
+                }
+                triggers.forEach(trigger => trigger.addEventListener('click', this.toggle.bind(this), false));
+            }
+        }
+
+        /**
+         * Toggle popup
+         * @returns {void}
+         */
+        toggle() {
+            this.root.classList.toggle('is-active');
+        }
+
+        /**
+         * get content block of popup
+         * @returns {HTMLElement} An element that displays content
+         */
+        getMessageBox() {
+            const content = this.root.querySelector('.message-box');
+            if (content) {
+                return content;
+            }
+            const customContentBox = document.createElement('div');
+            customContentBox.classList.add('message-box');
+            this.root.appendChild(customContentBox);
+            return customContentBox;
+        }
+
+
+        /**
+         * Update message box of popup
+         * @param {string} html HTML Content
+         * @returns {void} 
+         */
+        updateMessageBox(html) {
+            const element = this.getMessageBox();
+            element.innerHTML = html;
+        }
+    }
 
 })(window, document, jQuery, window.jpAjax);

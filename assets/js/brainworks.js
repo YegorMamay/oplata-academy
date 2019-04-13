@@ -1,5 +1,27 @@
 "use strict";
 
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
+
+function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+}
+
 (function(w, d, $, ajax) {
     $(function() {
         console.info("The site developed by BRAIN WORKS digital agency");
@@ -24,6 +46,7 @@
         anotherHamburgerMenu(".js-menu", ".js-hamburger", ".js-menu-close");
         buyOneClick(".one-click", '[data-field-id="field7"]', "h1.page-name");
         d.on("copy", addLink);
+        paymentTriggers(".payment-trigger");
         w.on("resize", function() {
             if (w.innerWidth >= 630) {
                 removeAllStyles($(".js-menu"));
@@ -226,4 +249,72 @@
             });
         });
     };
+    var paymentTriggers = function paymentTriggers(selector) {
+        var elements = $(selector);
+        var errorPopup = new CustomPopup(".error-popup");
+        elements.on("click", function(e) {
+            e.preventDefault();
+            var $el = $(e.target), product = {
+                name: $el.data("name"),
+                price: $el.data("price")
+            }, url = new URL("".concat(location.origin, "/wp-json/brainworks/payment"));
+            for (var key in product) {
+                url.searchParams.append(key, product[key]);
+            }
+            fetch(url).then(function(data) {
+                return data.json();
+            }).then(function(response) {
+                if (response.type === "SUCCESS") {
+                    location.href = response.message;
+                } else {
+                    callErrorPopup(errorPopup, response.message);
+                }
+            });
+        });
+    };
+    var callErrorPopup = function callErrorPopup(popup, message) {
+        popup.updateMessageBox(message);
+        popup.toggle();
+    };
+    var CustomPopup = function() {
+        function CustomPopup(popupSelector) {
+            var _this = this;
+            _classCallCheck(this, CustomPopup);
+            this.root = document.querySelector(popupSelector);
+            if (this.root) {
+                var triggers = this.root.querySelectorAll(".popup-trigger");
+                if (!triggers.length) {
+                    return false;
+                }
+                triggers.forEach(function(trigger) {
+                    return trigger.addEventListener("click", _this.toggle.bind(_this), false);
+                });
+            }
+        }
+        _createClass(CustomPopup, [ {
+            key: "toggle",
+            value: function toggle() {
+                this.root.classList.toggle("is-active");
+            }
+        }, {
+            key: "getMessageBox",
+            value: function getMessageBox() {
+                var content = this.root.querySelector(".message-box");
+                if (content) {
+                    return content;
+                }
+                var customContentBox = document.createElement("div");
+                customContentBox.classList.add("message-box");
+                this.root.appendChild(customContentBox);
+                return customContentBox;
+            }
+        }, {
+            key: "updateMessageBox",
+            value: function updateMessageBox(html) {
+                var element = this.getMessageBox();
+                element.innerHTML = html;
+            }
+        } ]);
+        return CustomPopup;
+    }();
 })(window, document, jQuery, window.jpAjax);

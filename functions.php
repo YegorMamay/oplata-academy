@@ -24,6 +24,7 @@ require get_template_directory() . '/inc/feedback.php';
 require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/meta-boxes.php';
 require get_template_directory() . '/inc/custom-post-types.php';
+require get_template_directory() . '/inc/rest-api.php';
 
 require get_template_directory() . '/inc/LoadMorePosts.php';
 
