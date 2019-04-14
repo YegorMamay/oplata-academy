@@ -31,7 +31,7 @@
         buyOneClick('.one-click', '[data-field-id="field7"]', 'h1.page-name');
         // On Copy
         d.on('copy', addLink);
-        paymentTriggers('.payment-trigger');
+        paymentTriggers('.payment-trigger')();
 
         w.on('resize', () => {
             if (w.innerWidth >= 630) {
@@ -485,32 +485,63 @@
     /**
      * Redirect to the payment page
      * @param {string} selector Triggers
-     * @returns {void}
+     * @returns {Function} Function that handle payment triggers
      */
     const paymentTriggers = (selector) => {
-        const elements = $(selector);
-        const errorPopup = new CustomPopup('.error-popup');
-        elements.on('click', (e) => {
-            e.preventDefault();
-            const $el = $(e.target),
-                product = {
-                    name: $el.data('name'),
-                    price: $el.data('price')
-                },
-                url = new URL(`${location.origin}/wp-json/brainworks/payment`);
-            for (let key in product) {
-                url.searchParams.append(key, product[key]);
-            }   
-            fetch(url) 
-                .then(data => data.json())
-                .then(response => {
-                    if (response.type === 'SUCCESS') {
-                        location.href = response.message;
-                    } else {
-                        callErrorPopup(errorPopup, response.message);
-                    }
-                });
-        });
+        // Local variables
+        const $select = $('<select />'),
+            $button   = $('<button />').addClass('button-medium button-inverse').text('Подтвердить'),
+            $span     = $('<span />'),
+            $div      = $('<div />'),
+            $option   = $('<option />'),
+            steps     = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        return () => {
+            const elements = $(selector),
+                errorPopup = new CustomPopup('.error-popup');
+            elements.on('click', (e) => {
+                e.preventDefault();
+                const $el = $(e.target),
+                    product = {
+                        name: '' + $el.data('name'),
+                        price: '' + $el.data('price'),
+                        partsCount: steps[0]
+                    },
+                    url = new URL(`${location.origin}/wp-json/brainworks/payment`);
+                $el.parent().html('')
+                    .append(
+                        $div.clone()
+                            .append(
+                                $span.clone().text('Выберите удобное количество платежей:'),
+                                $select.clone()
+                                    .append(
+                                        steps.map(i => $option.clone().val(i).text(i))
+                                    )
+                                    .on('change', e => {
+                                        product.partsCount = e.target.value;
+                                    })
+                            )
+                            .append(
+                                $button.clone()
+                                    .on('click', e => {
+                                        e.preventDefault(); 
+                                        if (product.partsCount < steps[0] || product.partsCount > steps[steps.length - 1]) return false;
+                                        for (let key in product) {
+                                            url.searchParams.append(key, product[key]);
+                                        }   
+                                        fetch(url) 
+                                            .then(data => data.json())
+                                            .then(response => {
+                                                if (response.type === 'SUCCESS') {
+                                                    location.href = response.message;
+                                                } else {
+                                                    callErrorPopup(errorPopup, response.message);
+                                                }
+                                            });
+                                    })
+                            )
+                    );
+            });
+        };
     };
 
     /**

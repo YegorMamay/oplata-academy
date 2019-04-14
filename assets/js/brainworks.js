@@ -46,7 +46,7 @@ function _createClass(Constructor, protoProps, staticProps) {
         anotherHamburgerMenu(".js-menu", ".js-hamburger", ".js-menu-close");
         buyOneClick(".one-click", '[data-field-id="field7"]', "h1.page-name");
         d.on("copy", addLink);
-        paymentTriggers(".payment-trigger");
+        paymentTriggers(".payment-trigger")();
         w.on("resize", function() {
             if (w.innerWidth >= 630) {
                 removeAllStyles($(".js-menu"));
@@ -250,27 +250,38 @@ function _createClass(Constructor, protoProps, staticProps) {
         });
     };
     var paymentTriggers = function paymentTriggers(selector) {
-        var elements = $(selector);
-        var errorPopup = new CustomPopup(".error-popup");
-        elements.on("click", function(e) {
-            e.preventDefault();
-            var $el = $(e.target), product = {
-                name: $el.data("name"),
-                price: $el.data("price")
-            }, url = new URL("".concat(location.origin, "/wp-json/brainworks/payment"));
-            for (var key in product) {
-                url.searchParams.append(key, product[key]);
-            }
-            fetch(url).then(function(data) {
-                return data.json();
-            }).then(function(response) {
-                if (response.type === "SUCCESS") {
-                    location.href = response.message;
-                } else {
-                    callErrorPopup(errorPopup, response.message);
-                }
+        var $select = $("<select />"), $button = $("<button />").addClass("button-medium button-inverse").text("Подтвердить"), $span = $("<span />"), $div = $("<div />"), $option = $("<option />"), steps = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ];
+        return function() {
+            var elements = $(selector), errorPopup = new CustomPopup(".error-popup");
+            elements.on("click", function(e) {
+                e.preventDefault();
+                var $el = $(e.target), product = {
+                    name: "" + $el.data("name"),
+                    price: "" + $el.data("price"),
+                    partsCount: steps[0]
+                }, url = new URL("".concat(location.origin, "/wp-json/brainworks/payment"));
+                $el.parent().html("").append($div.clone().append($span.clone().text("Выберите удобное количество платежей:"), $select.clone().append(steps.map(function(i) {
+                    return $option.clone().val(i).text(i);
+                })).on("change", function(e) {
+                    product.partsCount = e.target.value;
+                })).append($button.clone().on("click", function(e) {
+                    e.preventDefault();
+                    if (product.partsCount < steps[0] || product.partsCount > steps[steps.length - 1]) return false;
+                    for (var key in product) {
+                        url.searchParams.append(key, product[key]);
+                    }
+                    fetch(url).then(function(data) {
+                        return data.json();
+                    }).then(function(response) {
+                        if (response.type === "SUCCESS") {
+                            location.href = response.message;
+                        } else {
+                            callErrorPopup(errorPopup, response.message);
+                        }
+                    });
+                })));
             });
-        });
+        };
     };
     var callErrorPopup = function callErrorPopup(popup, message) {
         popup.updateMessageBox(message);

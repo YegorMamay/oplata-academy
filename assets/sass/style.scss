@@ -105,10 +105,6 @@ body {
     position: relative;
     overflow-x: hidden;
     min-height: 100%;
-
-    @media #{$mobile} {
-        padding-top: 175px;
-    }
 }
 
 strong,

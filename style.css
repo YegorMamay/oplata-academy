@@ -8092,6 +8092,23 @@ a:hover .fa {
     .price-card .price-card-button-container > a {
       display: inline-block;
       width: 100%; }
+    .price-card .price-card-button-container > div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      .price-card .price-card-button-container > div span {
+        font-size: 14px;
+        text-align: left; }
+      .price-card .price-card-button-container > div > select {
+        border-color: #E9AE30;
+        margin: 10px 0; }
   .price-card .price-card-list {
     padding-top: 40px;
     min-height: 400px; }
@@ -8184,12 +8201,6 @@ a:hover .fa {
     height: 35px; }
   .page-header .call-back {
     float: right; }
-  @media screen and (max-width: 480px) {
-    .page-header {
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      width: 100%; } }
   .page-header .page-header-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -8851,9 +8862,6 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100%; }
-  @media (max-width: 544px) {
-    .wrapper {
-      padding-top: 175px; } }
 
 strong,
 b {

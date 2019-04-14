@@ -12,12 +12,15 @@
             $store_pass = '5cdc686cc9c041c191aa529aeb2338f9';
             $name = filter_var($req->get_param('name'), FILTER_SANITIZE_STRING);
             $price = filter_var($req->get_param('price'), FILTER_SANITIZE_NUMBER_FLOAT);
+            $parts_count = filter_var($req->get_param('partsCount'), FILTER_SANITIZE_NUMBER_INT);
             $token = true;
             if (!$name || !$price || !$token) {
                 return ['type' => 'ERROR', 'message' => "One of params isn't filled"];
             }
             $order_id = time();
-            $parts_count = 5;
+            if (!$parts_count) {
+                $parts_count = 5;
+            }
             $response_url = 'https://oplata-academy.pro';
             $redirect_url = 'https://oplata-academy.pro';
             $amount = str_replace('.', '', strval($price));
@@ -33,7 +36,7 @@
                     "storeId": "8CCF79E7266E426C965D",
                     "orderId": "'.$order_id.'",
                     "amount": "'.$amount.'",
-                    "partsCount": "5",
+                    "partsCount": "'.$parts_count.'",
                     "merchantType": "PP",
                     "products": [
                       {
