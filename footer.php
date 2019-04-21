@@ -7,7 +7,7 @@
                 <?php echo get_default_logo_link('logo-colored.svg'); ?>
             </div>
             <div class="copyright-container">
-                <span>Сайт разработан <a href="https://brainworks.com.ua" target="_blank">“Brain Works”</a></span>
+                <span>Сайт разработан <a href="https://brainworks.pro/" target="_blank">“Brain Works”</a></span>
             </div>
             <div class="social-list-container">
                 <ul class="social-list">
